@@ -1,0 +1,35 @@
+git init
+git remote add origin "https://github.com/jisrag/FrontEndCourse.git"
+git pull origin master
+git status
+git add name.txt
+git commit -m "Mesage is here"
+git add -A
+git commit -a -m "Mesage is here"
+git log (Muestra los commits hechos)
+-----------branching--------
+git branch nameofbranch
+git checkout nameofbranch
+ls (despiega los archivos)
+git branch -D nameofbranch (elimina el branch)
+---------merging-----------
+MERGING BRANCHES (hay que comitear los archivos)
+git  merge nameofbranch (estando en master)
+git commit -a -m "comentarios" (comitea los archivos ya agregados)
+cat  archivo.txt  (muestra los cambiuos directos en el archivo)
+--------rebasing----------
+REBASING BRANCHES (los archivos ya vienen comiteados)
+git rebase master (in first branch)
+git rebase nameofthe branch( in master branch)
+------------gitflow------------------
+ssh-keygen (generar SSH par asubir archivos)
+"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCmL6kqdzIBj8ylXEg/eokzgWlkpFrEzJrNeTE37hZKbqMs9MNQx2jwyQWLvVtL1FP6qrnxZ9RKCzVAJCTrJpeObzcLy4ddlHbNHtVVcYLKgMWKbDlZgxjF4mlp5w73dW2g1ta7oD8TY80CLnXABd2qOC38/ehj5AGAWfcNfRbH9wsOee4rl+kF0i44dqqCJ/g6hYQITq76yyU5uXO0newXZkCHwRw0TRVrIiWSa/IfH1NKQTYvx1MHp/PX1koXzrN4Qhc+csPGriX/6DzOkw4uxHP77UtRwtoSvdx1/3X4eYXQ/C9QQPp+FwGB8goyeHTtk71eqYRnwB6MZPIB4YGh Jisrag@DESKTOP-A1VDDJ2"
+Registrarla en github / settinbgs / SSH/ Add key
+ssh -T git@github.com ( se termina el registro en guthub)
+(crear branch en github)
+git checkout firstbranch
+git push origin firstbranch 
+(Subir archivos al master)
+git push origin master
+(para revertir cambios en un archivo especifico)
+git checkout 802d31b4 revert.txt
