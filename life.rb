@@ -43,7 +43,7 @@ def update_init(init, neig)
                     if neig[row][col]>=4
                         init[row][col]=0
                     else
-                       if neig[row][col]==2 ||  neig [row][col]==2
+                       if neig[row][col]==2 ||  neig [row][col]==3
                         init[row][col]=1
                        end
                     end
