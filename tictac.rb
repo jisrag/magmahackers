@@ -1,6 +1,35 @@
 require 'Matrix'        
 #funcion para mostrar tablero
+def nine_steps()
+    table = [[1,2,3], [4,5,6], [7,8,9]]
+    table_game = [[1,2,3], [4,5,6], [7,8,9]]
+    selected= []
+    showtable(table)
+    puts '|X| Time to play, Put the number you want!'
+    get_x(table, selected)
+    puts '|O| Time to play, Put the number you want!'
+    get_o(table, selected)
+    puts '|X| Time to play, Put the number you want!'
+    get_x(table, selected)
+    puts '|O| Time to play, Put the number you want!'
+    get_o(table, selected)
+    puts '|X| Time to play, Put the number you want!'
+    get_x(table, selected)
+    puts '|O| Time to play, Put the number you want!'
+    get_o(table, selected)
+    puts '|X| Time to play, Put the number you want!'
+    get_x(table, selected)
+    puts '|O| Time to play, Put the number you want!'
+    get_o(table, selected)
+    puts '|X| Time to play, Put the number you want!'
+    get_x(table, selected)
+    end
+
+
+
+
 def showtable(tab)
+    system('cls')
     for i in(0..2)
        for j in(0..2)
            print " |#{tab[i][j]}|"
@@ -40,6 +69,7 @@ def get_o(table, selected)
         selected.push number
         number_in_o(number, table)
     end
+ 
 end
 
 #Insertar valor de X en  tablero y mostrar tablero
@@ -83,52 +113,83 @@ def wins?(tab)
 
     #Validacion en diagonal
     if((0...3).collect {|i| tab[i][i]} == x_wins)
-        puts "X is the Winner!!" 
-    elsif ((0...3).collect {|i| tab[i][i]} == o_wins)
-        puts "O is the Winner!!"
-    elsif ((0...3).collect {|i| tab[i]} == x_wins)  
-    end
-
-
-    #Validacion en diagonal Invertida
-    #if((3...0).collect {|i| tab[i][i]} == x_wins)
+        puts "X is the Winner! Enter to play again!" 
+        gets
+        nine_steps()
         
-    #elsif ((3...3).collect {|i| tab[i][i]} == o_wins)
-        #puts "O is the Winner!!"   
-    #end
+    elsif ((0...3).collect {|i| tab[i][i]} == o_wins)
+        puts "O is the Winner!! Enter to play again"
+        gets
+        nine_steps()
+    #Validacion en diagonal invertida
+    elsif ((0...3).collect {|i| tab[i][-i-1] } == x_wins)
+        puts "X is the Winner! Enter to play again!" 
+        gets
+        nine_steps()
+    elsif((0...3).collect {|i| tab[i][-i-1] } == o_wins)
+        puts "O is the Winner!! Enter to play again"
+        gets
+        nine_steps()
+    #Validacion renglones
+    elsif((0...3).collect {|i| tab[0][i] } == x_wins)
+        puts "X is the Winner! Enter to play again!" 
+        gets
+        nine_steps()
+    elsif((0...3).collect {|i| tab[0][i] } == o_wins)
+    puts "O is the Winner!! Enter to play again"
+    gets
+    nine_steps()
+    elsif((0...3).collect {|i| tab[1][i] } == x_wins)
+        puts "X is the Winner! Enter to play again!" 
+        gets
+        nine_steps()
+    elsif((0...3).collect {|i| tab[1][i] } == o_wins)
+        puts "O is the Winner!! Enter to play again"
+        gets
+        nine_steps()
+    elsif((0...3).collect {|i| tab[2][i] } == x_wins)
+        puts "X is the Winner! Enter to play again!" 
+        gets
+        nine_steps()
+    elsif((0...3).collect {|i| tab[2][i] } == o_wins)
+        puts "O is the Winner!! Enter to play again"
+        gets
+        nine_steps()
 
-    #Validacion en filas
-    #tab.each do |x| 
-    #   puts "X is the Winner!!" if x==x_wins
-    #    puts "O is the Winner!!" if x=o_wins
-    #end
-
+#Validando columnas
+    elsif((0...3).collect {|i| tab[i][0] } == x_wins)
+        puts "X is the Winner! Enter to play again!" 
+        gets
+        nine_steps()
+    elsif((0...3).collect {|i| tab[i][0] } == o_wins)
+        puts "O is the Winner!! Enter to play again"
+        gets
+        nine_steps()
+    elsif((0...3).collect {|i| tab[i][1] } == x_wins)
+        puts "X is the Winner! Enter to play again!" 
+        gets
+        nine_steps()
+    elsif((0...3).collect {|i| tab[i][1] } == o_wins)
+        puts "O is the Winner!! Enter to play again"
+        gets
+        nine_steps()
+    elsif((0...3).collect {|i| tab[i][2] } == x_wins)
+        puts "X is the Winner! Enter to play again!" 
+        gets
+        nine_steps()
+    elsif((0...3).collect {|i| tab[i][2] } == o_wins)
+        puts "O is the Winner!! Enter to play again"
+        gets
+        nine_steps()
+    end
 end
+
+
 
 
 #Programa principial
 puts 'Welcome to TicTacToe Logic X/O'
-table = [[1,2,3], [4,5,6], [7,8,9]]
-selected= []
-showtable(table)
-puts '|X| Time to play, Put the number you want!'
-get_x(table, selected)
-puts '|O| Time to play, Put the number you want!'
-get_o(table, selected)
-puts '|X| Time to play, Put the number you want!'
-get_x(table, selected)
-puts '|O| Time to play, Put the number you want!'
-get_o(table, selected)
-puts '|X| Time to play, Put the number you want!'
-get_x(table, selected)
-puts '|O| Time to play, Put the number you want!'
-get_o(table, selected)
-puts '|X| Time to play, Put the number you want!'
-get_x(table, selected)
-puts '|O| Time to play, Put the number you want!'
-get_o(table, selected)
-puts '|X| Time to play, Put the number you want!'
-get_x(table, selected)
+nine_steps()
 
 
 
