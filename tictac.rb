@@ -47,11 +47,11 @@ def get_x(table, selected)
             number=gets.to_i
         end
             selected.push number
-            number_in_x(number, table)
+            number_in_x(number, table, selected)
 
     else
         selected.push number
-        number_in_x(number, table)
+        number_in_x(number, table, selected)
 
     end
 end
@@ -64,16 +64,16 @@ def get_o(table, selected)
             number=gets.to_i
         end
         selected.push number
-        number_in_o(number, table)
+        number_in_o(number, table, selected)
     else
         selected.push number
-        number_in_o(number, table)
+        number_in_o(number, table, selected)
     end
  
 end
 
 #Insertar valor de X en  tablero y mostrar tablero
-def number_in_x (num, tab)
+def number_in_x (num, tab, selected)
     system('cls')
     tab[0][0]="X" if num == 1
     tab[0][1]="X" if num == 2
@@ -85,11 +85,11 @@ def number_in_x (num, tab)
     tab[2][1]="X" if num == 8
     tab[2][2]="X" if num == 9
     showtable(tab)
-    wins?(tab)
+    wins?(tab, selected)
     puts    
 end
 #Insertar valor de O en  tablero y mostrar tablero
-def number_in_o (num, tab)
+def number_in_o (num, tab, selected)
     system('cls')
     tab[0][0]="O" if num == 1
     tab[0][1]="O" if num == 2
@@ -101,16 +101,16 @@ def number_in_o (num, tab)
     tab[2][1]="O" if num == 8
     tab[2][2]="O" if num == 9
     showtable(tab)
-    wins?(tab)
+    wins?(tab, selected)
     puts    
 end
 
 #Validacion del ganador en cada ingreso
-def wins?(tab)
+def wins?(tab, selected)
     #Tableros Ganadores
     x_wins = ["X","X","X"]
     o_wins = ["O","O","O"]
-
+    #puts "El length es: #{tab.length}"
     #Validacion en diagonal
     if((0...3).collect {|i| tab[i][i]} == x_wins)
         puts "X is the Winner! Enter to play again!" 
@@ -179,6 +179,11 @@ def wins?(tab)
         nine_steps()
     elsif((0...3).collect {|i| tab[i][2] } == o_wins)
         puts "O is the Winner!! Enter to play again"
+        gets
+        nine_steps()
+    #Validamos cuando no gana nadie    
+    elsif (selected.length == 9)
+        puts "NOBODY Wins!! Enter to play again"
         gets
         nine_steps()
     end
