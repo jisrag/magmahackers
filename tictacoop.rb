@@ -13,10 +13,7 @@ class Game
 end
 
 puts 'Welcome to TicTacToe Logic X/O'
-#init_tab = [["1","2","3"], ["4","5","6"], ["7","8","9"]]
-#showtable(init_tab)
 tab = Game.new
-tab.showtable()
-
+tab.showtable
 puts '|X| Time to play, Put the number you want!'
 number=gets.chomp
