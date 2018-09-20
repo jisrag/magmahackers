@@ -1,4 +1,5 @@
 require 'Matrix'
+#Llenamos matriz principal
 def fill_mat(init, size)
     for i in 0...size
         for j in 0...size
@@ -7,6 +8,7 @@ def fill_mat(init, size)
     end
     return init
 end
+#Llenamos matriz de vecinos
 def fill_neig(neig)
     for i in 0...neig.length
         for j in 0...neig.length
@@ -15,7 +17,7 @@ def fill_neig(neig)
     end
     return neig
 end
-
+#codigo para mostrar matrices
 def showtable(table)
 
   size=table.length
@@ -25,7 +27,7 @@ def showtable(table)
    end
    puts
  end
-
+#Actualizamos la matriz inicial con las reglas del juego
 def update_init(init, neig)
     for row in 0...init.length-1
         col=0
@@ -56,7 +58,7 @@ end
 
 
 end
-
+#Funcion que incluye ContarVecinos y ActualizarMatrizPrincipal
 def print_next(init, neig)
     puts "Enter to continue!   OR Ctrl+C to exit"
     neig=count_neig(init, neig)
@@ -65,7 +67,7 @@ def print_next(init, neig)
     system('cls')
     showtable(init)
 end
-
+#En esta funcion mandamos llamar las subfunciones para contar
 def count_neig(init, neig)
     neig=count_center(init, neig)
     neig=count_left(init, neig)
@@ -78,7 +80,7 @@ def count_neig(init, neig)
     neig=count_right_down(init, neig)
     return neig;
 end
-
+#Cuenta los vecinos de las celulas del centro
 def count_center(init, neig)
     row=1
     col=1
@@ -101,7 +103,7 @@ def count_center(init, neig)
     end
     return neig
 end
-
+#cuenta los vecinos de las celulas de la izquiera
 def count_left(init, neig)
     row=1
     col=0
@@ -118,7 +120,7 @@ def count_left(init, neig)
     end
     return neig
 end
-
+#Cuentalos vecinos de las celulas de la derecha
 def count_right(init, neig)
     size=init.length
     row=1
@@ -134,7 +136,7 @@ def count_right(init, neig)
     end
     return neig
 end
-
+#Cuenta los vecinos de las celulas de arriba
 def count_up(init, neig)
     size=init.length
     row=0
@@ -149,7 +151,7 @@ def count_up(init, neig)
     end
     return neig
 end
-
+#Cuenta los vecinos de las celulas de abajo
 def count_down(init, neig)
     size=init.length
     row=size-1
@@ -164,7 +166,7 @@ def count_down(init, neig)
     end
     return neig
 end
-
+#Cuenta los vecinos de las celulas de izquierda_arriba
 def count_left_up(init, neig)
     row=0
     col=0
@@ -175,7 +177,7 @@ def count_left_up(init, neig)
     neig[row][col]=counter
     return neig
 end
-
+#cuenta los vecinos de las celulas de izquierda_abajo
 def count_left_down(init, neig)
     row=init.length-1
     col=0
@@ -186,7 +188,7 @@ def count_left_down(init, neig)
     neig[row][col]=counter
     return neig
 end
-
+#Cuenta los vecinos de las celulas de derecha_arriba
 def count_right_up(init, neig)
     row=0
     col=init.length-1
@@ -197,7 +199,7 @@ def count_right_up(init, neig)
     neig[row][col]=counter
     return neig
 end
-
+#Cuenta los vecinos de las celulas de dercha_abajo
 def count_right_down(init, neig)
     row=init.length-1
     col=init.length-1
@@ -209,7 +211,7 @@ def count_right_down(init, neig)
     return neig
 end
 
-
+#Programa Principal
     puts 'THE GAME OF LIFE'
     puts 'Please write the matrix size (5)'
     #We get the Matrix Size
