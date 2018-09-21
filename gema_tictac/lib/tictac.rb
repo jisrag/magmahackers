@@ -1,5 +1,5 @@
 class Tictac
     def self.show
-        return "Hola Cabrones"
+        print "Hola Cabrones"
     end
 end
