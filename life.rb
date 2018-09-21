@@ -23,7 +23,12 @@ def showtable(table)
   size=table.length
    for i in(0...size)
       for j in(0...size)
-       print" #{table[i][j]} "
+       #print" #{table[i][j]} "
+       if table[i][j]==1
+        print "■"
+       else
+        print " "
+       end
    end
    puts
  end
