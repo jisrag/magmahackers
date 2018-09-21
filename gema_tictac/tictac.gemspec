@@ -1,5 +1,5 @@
 Gem::Specification.new do |s|
-    s.name = "TicTacToe"
+    s.name = "tictac"
     s.version = '0.0.1'
     s.date = '2018-09-19'
     s.authors = ["Jose Israel Rincon Garibaldi"]
