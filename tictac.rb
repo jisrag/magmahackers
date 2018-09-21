@@ -1,11 +1,11 @@
 require 'Matrix'        
-#funcion para mostrar tablero
+#funcion para mostrar tablero iniciando X
 def nine_steps()
     table = [[1,2,3], [4,5,6], [7,8,9]]
     table_game = [[1,2,3], [4,5,6], [7,8,9]]
     selected= []
     showtable(table)
-    puts '|X| Time to play, Put the number you want!'
+    puts '|X|BEGINS Time to play, Put the number you want!'
     get_x(table, selected)
     puts '|O| Time to play, Put the number you want!'
     get_o(table, selected)
@@ -23,8 +23,33 @@ def nine_steps()
     get_o(table, selected)
     puts '|X| Time to play, Put the number you want!'
     get_x(table, selected)
-    end
-
+end
+#funcion para mostrar tablero iniciando X
+def nine_o_lost_steps()
+    table = [[1,2,3], [4,5,6], [7,8,9]]
+    table_game = [[1,2,3], [4,5,6], [7,8,9]]
+    selected= []
+    showtable(table)
+        
+    puts '|O|BEGINS Time to play, Put the number you want!'
+    get_o(table, selected)
+    puts '|X| Time to play, Put the number you want!'
+    get_x(table, selected)
+    puts '|O| Time to play, Put the number you want!'
+    get_o(table, selected)
+    puts '|X| Time to play, Put the number you want!'
+    get_x(table, selected)
+    puts '|O| Time to play, Put the number you want!'
+    get_o(table, selected)
+    puts '|X| Time to play, Put the number you want!'
+    get_x(table, selected)
+    puts '|O| Time to play, Put the number you want!'
+    get_o(table, selected)
+    puts '|X| Time to play, Put the number you want!'
+    get_x(table, selected)
+    puts '|O| Time to play, Put the number you want!'
+    get_x(table, selected)
+end
 
 
 
@@ -84,8 +109,9 @@ def number_in_x (num, tab, selected)
     tab[2][0]="X" if num == 7
     tab[2][1]="X" if num == 8
     tab[2][2]="X" if num == 9
+    penultimo="O"
     showtable(tab)
-    wins?(tab, selected)
+    wins?(tab, selected, penultimo)
     puts    
 end
 #Insertar valor de O en  tablero y mostrar tablero
@@ -100,22 +126,24 @@ def number_in_o (num, tab, selected)
     tab[2][0]="O" if num == 7
     tab[2][1]="O" if num == 8
     tab[2][2]="O" if num == 9
+    penultimo="X"
     showtable(tab)
-    wins?(tab, selected)
+    wins?(tab, selected, penultimo)
     puts    
 end
 
 #Validacion del ganador en cada ingreso
-def wins?(tab, selected)
+def wins?(tab, selected, penultimo)
     #Tableros Ganadores
     x_wins = ["X","X","X"]
     o_wins = ["O","O","O"]
+
     #puts "El length es: #{tab.length}"
     #Validacion en diagonal
     if((0...3).collect {|i| tab[i][i]} == x_wins)
         puts "X is the Winner! Enter to play again!" 
         gets
-        nine_steps()
+        nine_o_lost_steps()
         
     elsif ((0...3).collect {|i| tab[i][i]} == o_wins)
         puts "O is the Winner!! Enter to play again"
@@ -125,7 +153,7 @@ def wins?(tab, selected)
     elsif ((0...3).collect {|i| tab[i][-i-1] } == x_wins)
         puts "X is the Winner! Enter to play again!" 
         gets
-        nine_steps()
+        nine_o_lost_steps()
     elsif((0...3).collect {|i| tab[i][-i-1] } == o_wins)
         puts "O is the Winner!! Enter to play again"
         gets
@@ -134,7 +162,7 @@ def wins?(tab, selected)
     elsif((0...3).collect {|i| tab[0][i] } == x_wins)
         puts "X is the Winner! Enter to play again!" 
         gets
-        nine_steps()
+        nine_o_lost_steps()
     elsif((0...3).collect {|i| tab[0][i] } == o_wins)
     puts "O is the Winner!! Enter to play again"
     gets
@@ -142,7 +170,7 @@ def wins?(tab, selected)
     elsif((0...3).collect {|i| tab[1][i] } == x_wins)
         puts "X is the Winner! Enter to play again!" 
         gets
-        nine_steps()
+        nine_o_lost_steps()
     elsif((0...3).collect {|i| tab[1][i] } == o_wins)
         puts "O is the Winner!! Enter to play again"
         gets
@@ -150,7 +178,7 @@ def wins?(tab, selected)
     elsif((0...3).collect {|i| tab[2][i] } == x_wins)
         puts "X is the Winner! Enter to play again!" 
         gets
-        nine_steps()
+        nine_o_lost_steps()
     elsif((0...3).collect {|i| tab[2][i] } == o_wins)
         puts "O is the Winner!! Enter to play again"
         gets
@@ -160,7 +188,7 @@ def wins?(tab, selected)
     elsif((0...3).collect {|i| tab[i][0] } == x_wins)
         puts "X is the Winner! Enter to play again!" 
         gets
-        nine_steps()
+        nine_o_lost_steps()
     elsif((0...3).collect {|i| tab[i][0] } == o_wins)
         puts "O is the Winner!! Enter to play again"
         gets
@@ -168,7 +196,7 @@ def wins?(tab, selected)
     elsif((0...3).collect {|i| tab[i][1] } == x_wins)
         puts "X is the Winner! Enter to play again!" 
         gets
-        nine_steps()
+        nine_o_lost_steps()
     elsif((0...3).collect {|i| tab[i][1] } == o_wins)
         puts "O is the Winner!! Enter to play again"
         gets
@@ -176,7 +204,7 @@ def wins?(tab, selected)
     elsif((0...3).collect {|i| tab[i][2] } == x_wins)
         puts "X is the Winner! Enter to play again!" 
         gets
-        nine_steps()
+        nine_o_lost_steps()
     elsif((0...3).collect {|i| tab[i][2] } == o_wins)
         puts "O is the Winner!! Enter to play again"
         gets
@@ -185,7 +213,11 @@ def wins?(tab, selected)
     elsif (selected.length == 9)
         puts "NOBODY Wins!! Enter to play again"
         gets
+        if penultimo=="X"
         nine_steps()
+        else
+        nine_o_lost_steps()
+        end
     end
 end
 
