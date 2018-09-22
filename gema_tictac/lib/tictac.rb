@@ -1,4 +1,5 @@
 class Tictac
+
     def showtable
         system('cls')
         for i in(0..2)
