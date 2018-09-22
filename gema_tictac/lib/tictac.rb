@@ -1,5 +1,5 @@
 class Tictac
-
+#Mostramos el tablero
     def showtable
         system('cls')
         for i in(0..2)
@@ -9,6 +9,7 @@ class Tictac
            puts
         end
     end
+#Este es el inicio del juego, asi se juega la primer ronda
     def nine_steps
         @tab= [[1,2,3], [4,5,6], [7,8,9]]
         @selected= []
@@ -23,6 +24,7 @@ class Tictac
         self.get_o
         self.get_x
     end
+# Se llama a esta funcion cuando O empieza el juego
     def nine_o_lost_steps
         @tab = [[1,2,3], [4,5,6], [7,8,9]]
         @selected= []
@@ -37,6 +39,7 @@ class Tictac
         self.get_x
         self.get_o
     end
+    #Se obtiene la casilla donde se guarda X
     def get_x
         puts '|X|Time to play, Put the number you want!'
         @num=gets.to_i
@@ -54,7 +57,7 @@ class Tictac
     
         end
     end
-
+#Se obtiene la casilla donde se guarda O
     def get_o
         puts '|O|Time to play, Put the number you want!'
         @num=gets.to_i
@@ -69,8 +72,8 @@ class Tictac
             @selected.push @num
             self.number_in_o
         end
-     
     end
+    #Se agrega O al tablero
     def number_in_o
         system('cls')
         @tab[0][0]="O" if @num == 1
@@ -87,7 +90,7 @@ class Tictac
         self.wins?
         puts    
     end
-
+#Se agrega X al tableror
     def number_in_x 
         system('cls')
         @tab[0][0]="X" if @num == 1
@@ -104,6 +107,7 @@ class Tictac
         self.wins?
         puts    
     end
+#Se valida quien gana y quien inicia la siguiente ronda
     def wins?
         #Tableros Ganadores
         @x_wins = ["X","X","X"]
