@@ -19,7 +19,7 @@
 
 ## For Playyers
 <ul>
-<li> X start the gane, you have to enter a number of the table where
+<li> X start the game, you have to enter a number of the table where
 you want to place your play "X"  </li>
 <li>O is the next in the gane, you have to enter a number of the table where
 you want to place your play  "O"  </li>
