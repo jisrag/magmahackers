@@ -1,4 +1,6 @@
-require 'Tictac'
+require 'tictac'
 
 puts 'Welcome to TicTacToe Logic X/O'
-Tictac.show
+ game = Tictac.new
+ game.show
+ game.nine_steps
