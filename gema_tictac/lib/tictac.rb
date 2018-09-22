@@ -10,7 +10,7 @@ class Tictac
         end
     end
 #Este es el inicio del juego, asi se juega la primer ronda
-    def nine_steps
+    def start
         @tab= [[1,2,3], [4,5,6], [7,8,9]]
         @selected= []
         self.showtable
@@ -122,7 +122,7 @@ class Tictac
         elsif ((0...3).collect {|i| @tab[i][i]} == @o_wins)
             puts "O is the WINNER!! Enter to play again"
             gets
-            self.nine_steps
+            self.start
         #Validacion en diagonal invertida
         elsif ((0...3).collect {|i| @tab[i][-i-1] } == @x_wins)
             puts "X is the WINNER! Enter to play again!" 
@@ -131,7 +131,7 @@ class Tictac
         elsif((0...3).collect {|i| @tab[i][-i-1] } == @o_wins)
             puts "O is the WINNER!! Enter to play again"
             gets
-            self.nine_steps
+            self.start
         #Validacion renglones
         elsif((0...3).collect {|i| @tab[0][i] } == @x_wins)
             puts "X is the WINNER! Enter to play again!" 
@@ -140,7 +140,7 @@ class Tictac
         elsif((0...3).collect {|i| @tab[0][i] } == @o_wins)
         puts "O is the WINNER!! Enter to play again"
         gets
-        self.nine_steps
+        self.start
         elsif((0...3).collect {|i| @tab[1][i] } == @x_wins)
             puts "X is the WINNER! Enter to play again!" 
             gets
@@ -148,7 +148,7 @@ class Tictac
         elsif((0...3).collect {|i| @tab[1][i] } == @o_wins)
             puts "O is the WINNER!! Enter to play again"
             gets
-            self.nine_steps
+            self.start
         elsif((0...3).collect {|i| @tab[2][i] } == @x_wins)
             puts "X is the WINNER! Enter to play again!" 
             gets
@@ -156,7 +156,7 @@ class Tictac
         elsif((0...3).collect {|i| @tab[2][i] } == @o_wins)
             puts "O is the WINNER!! Enter to play again"
             gets
-            self.nine_steps
+            self.start
     
     #Validando columnas
         elsif((0...3).collect {|i| @tab[i][0] } == @x_wins)
@@ -166,7 +166,7 @@ class Tictac
         elsif((0...3).collect {|i| @tab[i][0] } == @o_wins)
             puts "O is the WINNER!! Enter to play again"
             gets
-            self.nine_steps
+            self.start
         elsif((0...3).collect {|i| @tab[i][1] } == @x_wins)
             puts "X is the WINNER! Enter to play again!" 
             gets
@@ -174,7 +174,7 @@ class Tictac
         elsif((0...3).collect {|i| @tab[i][1] } == @o_wins)
             puts "O is the WINNER!! Enter to play again"
             gets
-            self.nine_steps
+            self.start
         elsif((0...3).collect {|i| @tab[i][2] } == @x_wins)
             puts "X is the WINNER! Enter to play again!" 
             gets
@@ -182,13 +182,13 @@ class Tictac
         elsif((0...3).collect {|i| @tab[i][2] } == @o_wins)
             puts "O is the WINNER!! Enter to play again"
             gets
-            self.nine_steps
+            self.start
         #Validamos cuando no gana nadie    
         elsif (@selected.length == 9)
             puts "NOBODY Wins!! Enter to play again"
             gets
             if @penultimo=="X"
-            self.nine_steps
+            self.start
             else
             self.nine_o_lost_steps
             end
