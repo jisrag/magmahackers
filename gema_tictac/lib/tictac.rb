@@ -112,19 +112,30 @@ class Tictac
         #Tableros Ganadores
         @x_wins = ["X","X","X"]
         @o_wins = ["O","O","O"]
+        self.diagonal
+        self.inverted_diag
+        self.row
+        self.column
+        self.nobody_wins    
+    end
     
-        #Validacion en diagonal
+    #Metodo de Validacion en diagonal
+    def diagonal
         if((0...3).collect {|i| @tab[i][i]} == @x_wins)
             puts "X is the WINNER! Enter to play again!" 
             gets
             self.nine_o_lost_steps
-            
+        
         elsif ((0...3).collect {|i| @tab[i][i]} == @o_wins)
             puts "O is the WINNER!! Enter to play again"
             gets
             self.start
-        #Validacion en diagonal invertida
-        elsif ((0...3).collect {|i| @tab[i][-i-1] } == @x_wins)
+        end
+    end
+
+    #Metodo de Validacion en diagonal invertida
+    def inverted_diag
+        if ((0...3).collect {|i| @tab[i][-i-1] } == @x_wins)
             puts "X is the WINNER! Enter to play again!" 
             gets
             self.nine_o_lost_steps
@@ -132,8 +143,12 @@ class Tictac
             puts "O is the WINNER!! Enter to play again"
             gets
             self.start
-        #Validacion renglones
-        elsif((0...3).collect {|i| @tab[0][i] } == @x_wins)
+        end
+    end
+
+    #Metodo de Validacion en renglones
+    def row
+        if((0...3).collect {|i| @tab[0][i] } == @x_wins)
             puts "X is the WINNER! Enter to play again!" 
             gets
             self.nine_o_lost_steps
@@ -157,9 +172,11 @@ class Tictac
             puts "O is the WINNER!! Enter to play again"
             gets
             self.start
-    
-    #Validando columnas
-        elsif((0...3).collect {|i| @tab[i][0] } == @x_wins)
+        end
+    end
+    #Metodo de validacion de columnas
+    def column
+        if((0...3).collect {|i| @tab[i][0] } == @x_wins)
             puts "X is theWINNER! Enter to play again!" 
             gets
             self.nine_o_lost_steps
@@ -183,8 +200,11 @@ class Tictac
             puts "O is the WINNER!! Enter to play again"
             gets
             self.start
-        #Validamos cuando no gana nadie    
-        elsif (@selected.length == 9)
+        end
+    end
+    #Metodo de validacion cuando empatan
+    def nobody_wins
+        if (@selected.length == 9)
             puts "NOBODY Wins!! Enter to play again"
             gets
             if @penultimo=="X"
@@ -194,6 +214,6 @@ class Tictac
             end
         end
     end
-    
+
     
 end
