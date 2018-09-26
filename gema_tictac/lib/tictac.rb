@@ -43,9 +43,9 @@ class Tictac
     def get_x
         puts '|X|Time to play, Put the number you want!'
         @num=gets.to_i
-        if @selected.include?(@num)
-            while @selected.include?(@num)
-                puts 'That NUMBER EXISTS mow in the table:'
+        if @selected.include?(@num) or @num>9 or @num<1
+            while @selected.include?(@num) or @num>9 or @num<1
+                puts 'That NUMBER EXISTS now in the table or is not at RANGE:'
                 @num=gets.to_i
             end
                 @selected.push @num
@@ -61,9 +61,9 @@ class Tictac
     def get_o
         puts '|O|Time to play, Put the number you want!'
         @num=gets.to_i
-        if @selected.include?(@num) || @num<1
-            while @selected.include?(@num)
-                puts 'That NUMBER EXISTS mow in the table:'
+        if @selected.include?(@num) or @num>9 or @num<1
+            while @selected.include?(@num) or @num>9 or @num<1
+                puts 'That NUMBER EXISTS now in the table or is not at RANGE:'
                 @num=gets.to_i
             end
             @selected.push @num
