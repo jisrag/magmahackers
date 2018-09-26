@@ -13,31 +13,31 @@ class Tictac
     def start
         @tab= [[1,2,3], [4,5,6], [7,8,9]]
         @selected= []
-        self.showtable
-        self.get_x
-        self.get_o
-        self.get_x
-        self.get_o
-        self.get_x
-        self.get_o
-        self.get_x
-        self.get_o
-        self.get_x
+        showtable
+        get_x
+        get_o
+        get_x
+        get_o
+        get_x
+        get_o
+        get_x
+        get_o
+        get_x
     end
 # Se llama a esta funcion cuando O empieza el juego
     def nine_o_lost_steps
         @tab = [[1,2,3], [4,5,6], [7,8,9]]
         @selected= []
-        self.showtable
-        self.get_o
-        self.get_x
-        self.get_o
-        self.get_x
-        self.get_o
-        self.get_x
-        self.get_o
-        self.get_x
-        self.get_o
+        showtable
+        get_o
+        get_x
+        get_o
+        get_x
+        get_o
+        get_x
+        get_o
+        get_x
+        get_o
     end
     #Se obtiene la casilla donde se guarda X
     def get_x
@@ -49,11 +49,11 @@ class Tictac
                 @num=gets.to_i
             end
                 @selected.push @num
-                self.number_in_x
+                number_in_x
     
         else
             @selected.push @num
-            self.number_in_x
+            number_in_x
     
         end
     end
@@ -67,10 +67,10 @@ class Tictac
                 @num=gets.to_i
             end
             @selected.push @num
-            self.number_in_o
+            number_in_o
         else
             @selected.push @num
-            self.number_in_o
+            number_in_o
         end
     end
     #Se agrega O al tablero
@@ -86,8 +86,8 @@ class Tictac
         @tab[2][1]="O" if @num == 8
         @tab[2][2]="O" if @num == 9
         @penultimo="X"
-        self.showtable
-        self.wins?
+        showtable
+        wins?
         puts    
     end
 #Se agrega X al tableror
@@ -103,8 +103,8 @@ class Tictac
         @tab[2][1]="X" if @num == 8
         @tab[2][2]="X" if @num == 9
         @penultimo="O"
-        self.showtable
-        self.wins?
+        showtable
+        wins?
         puts    
     end
 #Se valida quien gana y quien inicia la siguiente ronda
@@ -112,61 +112,61 @@ class Tictac
         #Tableros Ganadores
         @x_wins = ["X","X","X"]
         @o_wins = ["O","O","O"]
-        self.diagonal
-        self.inverted_diag
-        self.row
-        self.column
-        self.nobody_wins    
+        diagonal
+        inverted_diag
+        row
+        column
+        nobody_wins    
     end
     
     #Metodo de Validacion en diagonal
     def diagonal
         if((0...3).collect {|i| @tab[i][i]} == @x_wins)
-            self.winer_x
+            winer_x
         elsif ((0...3).collect {|i| @tab[i][i]} == @o_wins)
-            self.winer_o
+            winer_o
         end
     end
 
     #Metodo de Validacion en diagonal invertida
     def inverted_diag
         if ((0...3).collect {|i| @tab[i][-i-1] } == @x_wins)
-            self.winer_x
+            winer_x
         elsif((0...3).collect {|i| @tab[i][-i-1] } == @o_wins)
-            self.winer_o
+            winer_o
         end
     end
 
     #Metodo de Validacion en renglones
     def row
         if((0...3).collect {|i| @tab[0][i] } == @x_wins)
-            self.winer_x
+            winer_x
         elsif((0...3).collect {|i| @tab[0][i] } == @o_wins)
-            self.winer_o
+            winer_o
         elsif((0...3).collect {|i| @tab[1][i] } == @x_wins)
-            self.winer_x
+            winer_x
         elsif((0...3).collect {|i| @tab[1][i] } == @o_wins)
-            self.winer_o
+            winer_o
         elsif((0...3).collect {|i| @tab[2][i] } == @x_wins)
-            self.winer_x
+            winer_x
         elsif((0...3).collect {|i| @tab[2][i] } == @o_wins)
-            self.winer_o
+            winer_o
         end
     end
     #Metodo de validacion de columnas
     def column
         if((0...3).collect {|i| @tab[i][0] } == @x_wins)
-            self.winer_x
+            winer_x
         elsif((0...3).collect {|i| @tab[i][0] } == @o_wins)
-            self.winer_o
+            winer_o
         elsif((0...3).collect {|i| @tab[i][1] } == @x_wins)
-            self.winer_x
+            winer_x
         elsif((0...3).collect {|i| @tab[i][1] } == @o_wins)
-            self.winer_o
+            winer_o
         elsif((0...3).collect {|i| @tab[i][2] } == @x_wins)
-            self.winer_x
+            winer_x
         elsif((0...3).collect {|i| @tab[i][2] } == @o_wins)
-            self.winer_o
+            winer_o
         end
     end
     #Metodo de validacion cuando empatan
@@ -175,9 +175,9 @@ class Tictac
             puts "NOBODY Wins!! Enter to play again"
             gets
             if @penultimo=="X"
-            self.start
+                start
             else
-            self.nine_o_lost_steps
+                nine_o_lost_steps
             end
         end
     end
@@ -185,13 +185,13 @@ class Tictac
     def winer_x
         puts "X is the WINNER! Enter to play again!" 
         gets
-        self.nine_o_lost_steps
+        nine_o_lost_steps
     end
     #Se eejcuta si gana O
     def winer_o
         puts "O is the WINNER!! Enter to play again"
             gets
-            self.start
+            start
     end
 
     
